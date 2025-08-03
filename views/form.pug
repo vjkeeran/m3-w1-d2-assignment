@@ -1,0 +1,18 @@
+extends layout
+
+block content
+  if errors.length
+    div.error
+      h3 There were problems with your submission:
+      ul
+        each err in errors
+          li= err.msg
+
+  form(action="/" method="POST")
+    .field
+      label(for="name") Name:
+      input#name(type="text" name="name" value=(data.name || ''))
+    .field
+      label(for="email") Email:
+      input#email(type="text" name="email" value=(data.email || ''))
+    button.btn(type="submit") Submit
